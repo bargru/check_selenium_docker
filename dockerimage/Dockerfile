@@ -1,4 +1,4 @@
-FROM selenium/standalone-chrome:3.141.59-xenon
+FROM selenium/standalone-chrome:3.141.59
 
 LABEL maintainer="Opsdis Consulting AB <info@opsdis.com>"
 
@@ -17,7 +17,8 @@ RUN npm install -g selenium-side-runner
 RUN mkdir /sides && chown -R seluser /sides
 VOLUME [ "/sides" ]
 
-RUN mkdir /selenium-side-runner && chown -R seluser /selenium-side-runner
+RUN mkdir /selenium-side-runner && chown -R seluser /selenium-side-runner \
+  && mkdir /selenium-side-runner/out && chown -R seluser /selenium-side-runner/out
 WORKDIR /selenium-side-runner
 
 # Five seconds after starting container (as deamon) selenium-side-runner will run every /sides/*.side file
