@@ -41,11 +41,12 @@ parser.add_argument('--no-newlines', action='store_true',
                     help="print newlines literally on multiline output")
 parser.add_argument("path", type=str, help="path to selenium test")
 args = parser.parse_args()
-path = args.path
+path = os.path.realpath(args.path)
 browser = args.browser
 timeout = abs(args.timeout)
 verbose = args.verbose
 os.chdir(path)
+
 if browser not in ['chrome', 'firefox', 'opera']:
     print("Error: not allowed browser!")
     sys.exit(3)
