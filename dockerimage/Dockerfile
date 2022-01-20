@@ -17,8 +17,7 @@ RUN npm install -g selenium-side-runner
 RUN mkdir /sides && chown -R seluser /sides
 VOLUME [ "/sides" ]
 
-RUN mkdir /selenium-side-runner && chown -R seluser /selenium-side-runner \
-  && mkdir /selenium-side-runner/out && chown -R seluser /selenium-side-runner/out
+RUN mkdir -p /selenium-side-runner/out && chown -R seluser /selenium-side-runner
 WORKDIR /selenium-side-runner
 
 # Five seconds after starting container (as deamon) selenium-side-runner will run every /sides/*.side file
